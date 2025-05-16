@@ -1,17 +1,15 @@
 # Cloud Data Warehouse POC
 
 ## Overview
-This proof-of-concept demonstrates loading a CSV file into AWS Redshift or Snowflake using Python. It includes:
-- Schema creation and data load for Redshift
-- Schema creation and data load for Snowflake
+Demonstrates loading a CSV file into AWS Redshift and Snowflake using Python.
 
 ## Prerequisites
 - Python 3.8+
-- AWS credentials with Redshift access (or Snowflake account credentials)
-- `psycopg2` for Redshift or `snowflake-connector-python` for Snowflake
+- AWS or Snowflake credentials
+- Required Python packages (listed in `requirements.txt`)
 
 ## Setup
-1. Create a Python virtual environment and install dependencies:
+1. **Install Dependencies**
    ```bash
    python -m venv venv
    source venv/bin/activate
