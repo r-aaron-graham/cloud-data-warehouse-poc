@@ -1,0 +1,13 @@
+redshift:
+  host: redshift-cluster.xxxx.us-east-1.redshift.amazonaws.com
+  port: 5439
+  dbname: dev
+  user: awsuser
+  password: YourPassword
+snowflake:
+  account: xxxx.us-east-1
+  user: SF_USER
+  password: YourPassword
+  warehouse: COMPUTE_WH
+  database: DEV_DB
+  schema: PUBLIC
