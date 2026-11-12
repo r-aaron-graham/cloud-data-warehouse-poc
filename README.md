@@ -1,16 +1,28 @@
 # Cloud Data Warehouse POC
 
-## Overview
-Demonstrates loading a CSV file into AWS Redshift and Snowflake using Python.
+A two-row CSV fixture and separate loader examples for Redshift and Snowflake.
+Use the offline check first to verify that Python can read the fixture and
+parse its integer and floating-point columns.
 
-## Prerequisites
-- Python 3.8+
-- AWS or Snowflake credentials
-- Required Python packages (listed in `requirements.txt`)
+```bash
+python scripts/sample_data.py
+```
 
-## Setup
-1. **Install Dependencies**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
+Expected output is `Validated 2 sample rows`. This check uses the Python
+standard library.
+
+## Warehouse loaders
+
+Install the connector dependencies with `python -m pip install -r requirements.txt`.
+Copy `scripts/configs.yaml` outside the checkout and fill in the destination
+warehouse settings there.
+Run the corresponding loader from the repository root:
+
+```bash
+python scripts/load_to_redshift.py --config /path/to/local-config.yaml
+python scripts/load_to_snowflake.py --config /path/to/local-config.yaml
+```
+
+Both examples write to a table named `sample_data`. The Redshift example
+inserts the small fixture directly, so each run appends rows. The Snowflake
+example uploads the CSV to the table stage and skips the CSV header.
